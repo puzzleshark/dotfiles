@@ -1,0 +1,508 @@
+keymap:
+
+  - mode: insert
+    exact_match: true
+    remap:
+      KEY_CAPSLOCK: { set_mode: normal }
+
+  - mode: normal
+    exact_match: true
+    application:
+      only: Google-chrome
+    remap:
+      KEY_SPACE:
+        remap:
+          KEY_T: C-KEY_T
+          KEY_B: C-SHIFT-KEY_B # bookmark bar
+      KEY_G:
+        remap:
+          KEY_U: C-KEY_L
+
+  - mode: normal
+    exact_match: true
+    application:
+      only: Alacritty
+    remap:
+      KEY_P: C-SHIFT-KEY_V
+      KEY_V: [C-SHIFT-SPACE, KEY_V]
+      KEY_Y: [KEY_Y, C-SHIFT-SPACE]
+
+  - mode: normal
+    exact_match: true
+    application:
+      only: Code
+    remap:
+      KEY_SPACE:
+        remap:
+          KEY_T: C-KEY_GRAVE
+          KEY_M: C-KEY_1
+          KEY_E: C-SHIFT-KEY_E
+          KEY_X: C-SHIFT-KEY_X
+          KEY_S: C-KEY_B
+          KEY_B: C-KEY_J
+      KEY_G:
+        remap:
+          KEY_D: KEY_F12
+      SHIFT-KEY_O: [KEY_END, C-SHIFT-KEY_ENTER, { set_mode: insert }]
+
+  - mode: normal
+    exact_match: true
+    remap:
+
+      # special key
+      KEY_CAPSLOCK: KEY_ESC
+
+      KEY_GRAVE: KEY_ESC
+      SHIFT-KEY_GRAVE: KEY_ESC
+      KEY_1: KEY_ESC
+      SHIFT-KEY_1: KEY_ESC
+      KEY_2: KEY_ESC
+      SHIFT-KEY_2: KEY_ESC
+      KEY_3: KEY_ESC
+      SHIFT-KEY_3: KEY_ESC
+      KEY_4: KEY_ESC
+      SHIFT-KEY_4: KEY_END
+      KEY_5: KEY_ESC
+      SHIFT-KEY_5: KEY_ESC
+      KEY_6: KEY_ESC
+      SHIFT-KEY_6: KEY_HOME
+      KEY_7: KEY_ESC
+      SHIFT-KEY_7: KEY_ESC
+      KEY_8: KEY_ESC
+      SHIFT-KEY_8: KEY_ESC
+      KEY_9: KEY_ESC
+      SHIFT-KEY_9: KEY_ESC
+      KEY_0: [KEY_HOME, C-KEY_LEFT]
+      SHIFT-KEY_0: KEY_ESC
+      KEY_MINUS: KEY_ESC
+      SHIFT-KEY_MINUS: KEY_ESC
+      KEY_EQUAL: KEY_ESC
+      SHIFT-KEY_EQUAL: KEY_ESC
+      KEY_Q: KEY_ESC
+      SHIFT-KEY_Q: KEY_ESC
+      KEY_W: KEY_ESC
+      SHIFT-KEY_W: KEY_ESC
+      KEY_E: C-KEY_RIGHT
+      SHIFT-KEY_E: KEY_ESC
+      KEY_R: KEY_ESC
+      SHIFT-KEY_R: KEY_ESC
+      KEY_T: KEY_ESC
+      SHIFT-KEY_T: KEY_ESC
+      KEY_Y:
+        remap:
+          KEY_Y: C-KEY_C
+      SHIFT-KEY_Y: KEY_ESC
+      KEY_U: C-KEY_Z
+      SHIFT-KEY_U: KEY_ESC
+      KEY_I: { set_mode: insert }
+      SHIFT-KEY_I: [KEY_HOME, { set_mode: insert }]
+      KEY_O: [KEY_END, KEY_ENTER, { set_mode: insert }]
+      SHIFT-KEY_O: KEY_ESC
+      KEY_P: C-KEY_V
+      SHIFT-KEY_P: KEY_ESC
+      KEY_LEFTBRACE: KEY_ESC
+      SHIFT-KEY_LEFTBRACE: KEY_ESC
+      KEY_RIGHTBRACE: KEY_ESC
+      SHIFT-KEY_RIGHTBRACE: KEY_ESC
+      KEY_A: [KEY_RIGHT, { set_mode: insert }]
+      SHIFT-KEY_A: [KEY_END, { set_mode: insert }]
+      KEY_S: { set_mode: sway }
+      SHIFT-KEY_S: KEY_ESC
+      KEY_D:  # delete stuff
+        remap:
+          KEY_I:
+            remap:
+              KEY_W: [KEY_RIGHT, C-KEY_LEFT, C-KEY_DELETE]
+          KEY_A:
+            remap:
+              KEY_W: [KEY_RIGHT, C-KEY_LEFT, C-KEY_DELETE, KEY_DELETE]
+          KEY_W: C-KEY_DELETE
+          KEY_D: C-X
+      SHIFT-KEY_D: [SHIFT-KEY_END, KEY_DELETE]
+      KEY_F: KEY_ESC
+      SHIFT-KEY_F: KEY_ESC
+      KEY_G:
+        remap:
+          KEY_G: C-KEY_HOME # beginning of file
+          KEY_H: KEY_PAGEUP
+          KEY_L: KEY_PAGEDOWN
+          KEY_T: C-KEY_TAB
+          SHIFT-KEY_T: C-SHIFT-KEY_TAB
+          KEY_C:
+            remap:
+              KEY_C: C-KEY_SLASH
+      SHIFT-KEY_G: C-KEY_END
+      KEY_H: KEY_LEFT
+      SHIFT-KEY_H: KEY_ESC
+      KEY_J: KEY_DOWN
+      SHIFT-KEY_J: [KEY_DOWN, KEY_HOME, KEY_SPACE, C-KEY_BACKSPACE, KEY_BACKSPACE, KEY_SPACE]
+      KEY_K: KEY_UP
+      SHIFT-KEY_K: KEY_ESC
+      KEY_L: KEY_RIGHT
+      SHIFT-KEY_L: KEY_ESC
+      KEY_SEMICOLON: KEY_ESC
+      SHIFT-KEY_SEMICOLON:
+        remap:
+          KEY_W:
+            remap:
+              KEY_ENTER: C-KEY_S
+          KEY_Q:
+            remap:
+              KEY_ENTER: C-KEY_W
+      KEY_APOSTROPHE: KEY_ESC
+      SHIFT-KEY_APOSTROPHE: KEY_ESC
+      KEY_BACKSLASH: KEY_ESC
+      SHIFT-KEY_BACKSLASH: KEY_ESC
+      KEY_Z: KEY_ESC
+      SHIFT-KEY_Z: KEY_ESC
+      KEY_X: KEY_DELETE
+      SHIFT-KEY_X: KEY_ESC
+      KEY_C:  # equivalent cut stuff
+        remap:
+          KEY_I:
+            remap:
+              KEY_W: [KEY_RIGHT, C-KEY_LEFT, C-KEY_DELETE, { set_mode: insert }]
+          KEY_A:
+            remap:
+              KEY_W: [KEY_RIGHT, C-KEY_LEFT, C-KEY_DELETE, KEY_DELETE, { set_mode: insert }]
+          KEY_W: [C-KEY_DELETE, { set_mode: insert }]
+      SHIFT-KEY_C: KEY_ESC
+      KEY_V: { set_mode: visual }
+      SHIFT-KEY_V: [KEY_HOME, C-KEY_LEFT, SHIFT-KEY_END, { set_mode: visual-line }]
+      KEY_B: C-KEY_LEFT
+      SHIFT-KEY_B: KEY_ESC
+      KEY_N: KEY_TAB
+      SHIFT-KEY_N: SHIFT-KEY_TAB
+      KEY_M: KEY_ESC
+      SHIFT-KEY_M: KEY_ESC
+      KEY_COMMA: KEY_ESC # ,
+      SHIFT-KEY_COMMA: KEY_ESC
+      KEY_DOT: KEY_ESC # .
+      SHIFT-KEY_DOT: KEY_ESC
+      KEY_SLASH: [C-KEY_F, { set_mode: insert }] # /
+      SHIFT-KEY_SLASH: KEY_ESC
+      KEY_SPACE: KEY_ESC
+
+
+  - mode: visual
+    exact_match: true
+    remap:
+
+      KEY_CAPSLOCK: [KEY_ESC, { set_mode: normal }]
+      KEY_ESC: [KEY_ESC, { set_mode: normal }]
+
+      KEY_GRAVE: KEY_ESC
+      SHIFT-KEY_GRAVE: KEY_ESC
+      KEY_1: KEY_ESC
+      SHIFT-KEY_1: KEY_ESC
+      KEY_2: KEY_ESC
+      SHIFT-KEY_2: KEY_ESC
+      KEY_3: KEY_ESC
+      SHIFT-KEY_3: KEY_ESC
+      KEY_4: KEY_ESC
+      SHIFT-KEY_4: SHIFT-KEY_END
+      KEY_5: KEY_ESC
+      SHIFT-KEY_5: KEY_ESC
+      KEY_6: KEY_ESC
+      SHIFT-KEY_6: SHIFT-KEY_HOME
+      KEY_7: KEY_ESC
+      SHIFT-KEY_7: KEY_ESC
+      KEY_8: KEY_ESC
+      SHIFT-KEY_8: KEY_ESC
+      KEY_9: KEY_ESC
+      SHIFT-KEY_9: KEY_ESC
+      KEY_0: KEY_ESC
+      SHIFT-KEY_0: KEY_ESC
+      KEY_MINUS: KEY_ESC
+      SHIFT-KEY_MINUS: KEY_ESC
+      KEY_EQUAL: KEY_ESC
+      SHIFT-KEY_EQUAL: KEY_ESC
+      KEY_Q: KEY_ESC
+      SHIFT-KEY_Q: KEY_ESC
+      KEY_W: KEY_ESC
+      SHIFT-KEY_W: KEY_ESC
+      KEY_E: SHIFT-C-KEY_RIGHT
+      SHIFT-KEY_E: KEY_ESC
+      KEY_R: KEY_ESC
+      SHIFT-KEY_R: KEY_ESC
+      KEY_T: KEY_ESC
+      SHIFT-KEY_T: KEY_ESC
+      KEY_Y: [C-KEY_C, KEY_ESC, { set_mode: normal }]
+      SHIFT-KEY_Y: KEY_ESC
+      KEY_U: KEY_ESC
+      SHIFT-KEY_U: KEY_ESC
+      KEY_I: { set_mode: insert }
+      SHIFT-KEY_I: KEY_ESC
+      KEY_O: KEY_ESC
+      SHIFT-KEY_O: KEY_ESC
+      KEY_P: C-KEY_V
+      SHIFT-KEY_P: KEY_ESC
+      KEY_LEFTBRACE: KEY_ESC
+      SHIFT-KEY_LEFTBRACE: KEY_ESC
+      KEY_RIGHTBRACE: KEY_ESC
+      SHIFT-KEY_RIGHTBRACE: KEY_ESC
+      KEY_A: [KEY_RIGHT, { set_mode: insert }]
+      SHIFT-KEY_A: KEY_ESC
+      KEY_S: KEY_ESC
+      SHIFT-KEY_S: KEY_ESC
+      KEY_D: [C-KEY_X, { set_mode: normal }]
+      SHIFT-KEY_D: KEY_ESC
+      KEY_F: KEY_ESC
+      SHIFT-KEY_F: KEY_ESC
+      KEY_G:
+        remap:
+          KEY_G: SHIFT-C-KEY_HOME
+          KEY_H: SHIFT-KEY_PAGEUP
+          KEY_L: SHIFT-KEY_PAGEDOWN
+          KEY_C: [C-KEY_SLASH, { set_mode: normal }]
+      SHIFT-KEY_G: SHIFT-C-KEY_END
+      KEY_H: SHIFT-KEY_LEFT
+      SHIFT-KEY_H: KEY_ESC
+      KEY_J: SHIFT-KEY_DOWN
+      SHIFT-KEY_J: KEY_ESC
+      KEY_K: SHIFT-KEY_UP
+      SHIFT-KEY_K: KEY_ESC
+      KEY_L: SHIFT-KEY_RIGHT
+      SHIFT-KEY_L: KEY_ESC
+      KEY_SEMICOLON: KEY_ESC
+      SHIFT-KEY_SEMICOLON: KEY_ESC
+      KEY_APOSTROPHE: KEY_ESC
+      SHIFT-KEY_APOSTROPHE: KEY_ESC
+      KEY_BACKSLASH: KEY_ESC
+      SHIFT-KEY_BACKSLASH: KEY_ESC
+      KEY_Z: KEY_ESC
+      SHIFT-KEY_Z: KEY_ESC
+      KEY_X: KEY_ESC
+      SHIFT-KEY_X: KEY_ESC
+      KEY_C: [KEY_DELETE, { set_mode: insert }]
+      SHIFT-KEY_C: KEY_ESC
+      KEY_V: KEY_ESC
+      SHIFT-KEY_V: KEY_ESC
+      KEY_B: SHIFT-C-KEY_LEFT
+      SHIFT-KEY_B: KEY_ESC
+      KEY_N: KEY_ESC
+      SHIFT-KEY_N: KEY_ESC
+      KEY_M: KEY_ESC
+      SHIFT-KEY_M: KEY_ESC
+      KEY_COMMA: KEY_ESC
+      SHIFT-KEY_COMMA: KEY_ESC
+      KEY_DOT: KEY_ESC
+      SHIFT-KEY_DOT: KEY_ESC
+      KEY_SLASH: [C-KEY_F, { set_mode: insert } ]
+      SHIFT-KEY_SLASH: KEY_ESC
+      KEY_SPACE: KEY_ESC
+
+
+  - mode: visual-line
+    exact_match: true
+    remap:
+
+      KEY_CAPSLOCK: [KEY_ESC, { set_mode: normal }]
+      KEY_ESC: [KEY_ESC, { set_mode: normal }]
+
+      KEY_GRAVE: KEY_ESC
+      SHIFT-KEY_GRAVE: KEY_ESC
+      KEY_1: KEY_ESC
+      SHIFT-KEY_1: KEY_ESC
+      KEY_2: KEY_ESC
+      SHIFT-KEY_2: KEY_ESC
+      KEY_3: KEY_ESC
+      SHIFT-KEY_3: KEY_ESC
+      KEY_4: KEY_ESC
+      SHIFT-KEY_4: KEY_ESC
+      KEY_5: KEY_ESC
+      SHIFT-KEY_5: KEY_ESC
+      KEY_6: KEY_ESC
+      SHIFT-KEY_6: KEY_ESC
+      KEY_7: KEY_ESC
+      SHIFT-KEY_7: KEY_ESC
+      KEY_8: KEY_ESC
+      SHIFT-KEY_8: KEY_ESC
+      KEY_9: KEY_ESC
+      SHIFT-KEY_9: KEY_ESC
+      KEY_0: KEY_ESC
+      SHIFT-KEY_0: KEY_ESC
+      KEY_MINUS: KEY_ESC
+      SHIFT-KEY_MINUS: KEY_ESC
+      KEY_EQUAL: KEY_ESC
+      SHIFT-KEY_EQUAL: KEY_ESC
+      KEY_Q: KEY_ESC
+      SHIFT-KEY_Q: KEY_ESC
+      KEY_W: KEY_ESC
+      SHIFT-KEY_W: KEY_ESC
+      KEY_E: KEY_ESC
+      SHIFT-KEY_E: KEY_ESC
+      KEY_R: KEY_ESC
+      SHIFT-KEY_R: KEY_ESC
+      KEY_T: KEY_ESC
+      SHIFT-KEY_T: KEY_ESC
+      KEY_Y: [C-KEY_C, { set_mode: normal }]
+      SHIFT-KEY_Y: KEY_ESC
+      KEY_U: KEY_ESC
+      SHIFT-KEY_U: KEY_ESC
+      KEY_I: { set_mode: insert }
+      SHIFT-KEY_I: KEY_ESC
+      KEY_O: KEY_ESC
+      SHIFT-KEY_O: KEY_ESC
+      KEY_P: C-KEY_V
+      SHIFT-KEY_P: KEY_ESC
+      KEY_LEFTBRACE: KEY_ESC
+      SHIFT-KEY_LEFTBRACE: KEY_ESC
+      KEY_RIGHTBRACE: KEY_ESC
+      SHIFT-KEY_RIGHTBRACE: KEY_ESC
+      KEY_A: KEY_ESC
+      SHIFT-KEY_A: KEY_ESC
+      KEY_S: KEY_ESC
+      SHIFT-KEY_S: KEY_ESC
+      KEY_D: [C-KEY_X, { set_mode: normal }]
+      SHIFT-KEY_D: KEY_ESC
+      KEY_F: KEY_ESC
+      SHIFT-KEY_F: KEY_ESC
+      KEY_G:
+        remap:
+          KEY_G: [SHIFT-C-KEY_HOME, SHIFT-KEY_END]
+          KEY_H: [SHIFT-KEY_PAGEUP, SHIFT-KEY_END]
+          KEY_L: [SHIFT-KEY_PAGEDOWN, SHIFT-KEY_END]
+          KEY_C: [C-KEY_SLASH, KEY_ESC, { set_mode: normal }]
+      SHIFT-KEY_G: [SHIFT-C-KEY_END, SHIFT-KEY_END]
+      KEY_H: KEY_ESC
+      SHIFT-KEY_H: KEY_ESC
+      KEY_J: [SHIFT-KEY_DOWN, SHIFT-KEY_END]
+      SHIFT-KEY_J: KEY_ESC
+      KEY_K: [SHIFT-KEY_UP, SHIFT-KEY_END]
+      SHIFT-KEY_K: KEY_ESC
+      KEY_L: KEY_ESC
+      SHIFT-KEY_L: KEY_ESC
+      KEY_SEMICOLON: KEY_ESC
+      SHIFT-KEY_SEMICOLON: KEY_ESC
+      KEY_APOSTROPHE: KEY_ESC
+      SHIFT-KEY_APOSTROPHE: KEY_ESC
+      KEY_BACKSLASH: KEY_ESC
+      SHIFT-KEY_BACKSLASH: KEY_ESC
+      KEY_Z: KEY_ESC
+      SHIFT-KEY_Z: KEY_ESC
+      KEY_X: KEY_ESC
+      SHIFT-KEY_X: KEY_ESC
+      KEY_C: KEY_ESC
+      SHIFT-KEY_C: KEY_ESC
+      KEY_V: KEY_ESC
+      SHIFT-KEY_V: KEY_ESC
+      KEY_B: KEY_ESC
+      SHIFT-KEY_B: KEY_ESC
+      KEY_N: KEY_ESC
+      SHIFT-KEY_N: KEY_ESC
+      KEY_M: KEY_ESC
+      SHIFT-KEY_M: KEY_ESC
+      KEY_COMMA: KEY_ESC
+      SHIFT-KEY_COMMA: KEY_ESC
+      KEY_DOT: KEY_ESC
+      SHIFT-KEY_DOT: KEY_ESC
+      KEY_SLASH: KEY_ESC
+      SHIFT-KEY_SLASH: KEY_ESC
+      KEY_SPACE: KEY_ESC
+
+
+  - mode: sway
+    exact_match: true
+    remap:
+
+      KEY_CAPSLOCK: { set_mode: normal }
+
+      KEY_GRAVE: KEY_ESC
+      SHIFT-KEY_GRAVE: KEY_ESC
+      KEY_1: SUPER-1
+      SHIFT-KEY_1: KEY_ESC
+      KEY_2: SUPER-2
+      SHIFT-KEY_2: KEY_ESC
+      KEY_3: SUPER-3
+      SHIFT-KEY_3: KEY_ESC
+      KEY_4: SUPER-4
+      SHIFT-KEY_4: KEY_ESC
+      KEY_5: SUPER-5
+      SHIFT-KEY_5: KEY_ESC
+      KEY_6: SUPER-6
+      SHIFT-KEY_6: KEY_ESC
+      KEY_7: SUPER-7
+      SHIFT-KEY_7: KEY_ESC
+      KEY_8: SUPER-8
+      SHIFT-KEY_8: KEY_ESC
+      KEY_9: SUPER-9
+      SHIFT-KEY_9: KEY_ESC
+      KEY_0: SUPER-0
+      SHIFT-KEY_0: KEY_ESC
+      KEY_MINUS: KEY_ESC
+      SHIFT-KEY_MINUS: KEY_ESC
+      KEY_EQUAL: KEY_ESC
+      SHIFT-KEY_EQUAL: KEY_ESC
+      KEY_Q: KEY_ESC
+      SHIFT-KEY_Q: KEY_ESC
+      KEY_W: KEY_ESC
+      SHIFT-KEY_W: KEY_ESC
+      KEY_E: KEY_ESC
+      SHIFT-KEY_E: KEY_ESC
+      KEY_R: KEY_ESC
+      SHIFT-KEY_R: KEY_ESC
+      KEY_T: KEY_ESC
+      SHIFT-KEY_T: KEY_ESC
+      KEY_Y: KEY_ESC
+      SHIFT-KEY_Y: KEY_ESC
+      KEY_U: KEY_ESC
+      SHIFT-KEY_U: KEY_ESC
+      KEY_I: { set_mode: insert }
+      SHIFT-KEY_I: KEY_ESC
+      KEY_O: KEY_ESC
+      SHIFT-KEY_O: KEY_ESC
+      KEY_P: KEY_ESC
+      SHIFT-KEY_P: KEY_ESC
+      KEY_LEFTBRACE: KEY_ESC
+      SHIFT-KEY_LEFTBRACE: KEY_ESC
+      KEY_RIGHTBRACE: KEY_ESC
+      SHIFT-KEY_RIGHTBRACE: KEY_ESC
+      KEY_A: KEY_ESC
+      SHIFT-KEY_A: KEY_ESC
+      KEY_S: KEY_ESC
+      SHIFT-KEY_S: KEY_ESC
+      KEY_D: [SUPER-D, { set_mode: insert }]
+      SHIFT-KEY_D: KEY_ESC
+      KEY_F: KEY_ESC
+      SHIFT-KEY_F: KEY_ESC
+      KEY_G: KEY_ESC
+      SHIFT-KEY_G: KEY_ESC
+      KEY_H: SUPER-KEY_H
+      SHIFT-KEY_H: KEY_ESC
+      KEY_J: SUPER-KEY_J
+      SHIFT-KEY_J: KEY_ESC
+      KEY_K: SUPER-KEY_K
+      SHIFT-KEY_K: KEY_ESC
+      KEY_L: SUPER-KEY_L
+      SHIFT-KEY_L: KEY_ESC
+      KEY_SEMICOLON: KEY_ESC
+      SHIFT-KEY_SEMICOLON: KEY_ESC
+      KEY_APOSTROPHE: KEY_ESC
+      SHIFT-KEY_APOSTROPHE: KEY_ESC
+      KEY_BACKSLASH: KEY_ESC
+      SHIFT-KEY_BACKSLASH: KEY_ESC
+      KEY_Z: KEY_ESC
+      SHIFT-KEY_Z: KEY_ESC
+      KEY_X: SUPER-SHIFT-KEY_Q
+      SHIFT-KEY_X: KEY_ESC
+      KEY_C: KEY_ESC
+      SHIFT-KEY_C: KEY_ESC
+      KEY_V: KEY_ESC
+      SHIFT-KEY_V: KEY_ESC
+      KEY_B: KEY_ESC
+      SHIFT-KEY_B: KEY_ESC
+      KEY_N: KEY_ESC
+      SHIFT-KEY_N: KEY_ESC
+      KEY_M: KEY_ESC
+      SHIFT-KEY_M: KEY_ESC
+      KEY_COMMA: KEY_ESC
+      SHIFT-KEY_COMMA: KEY_ESC
+      KEY_DOT: KEY_ESC
+      SHIFT-KEY_DOT: KEY_ESC
+      KEY_SLASH: KEY_ESC
+      SHIFT-KEY_SLASH: KEY_ESC
+      KEY_SPACE: KEY_ESC
+      KEY_ENTER: [SUPER-KEY_ENTER, { set_mode: insert }]
+  
+default_mode: insert

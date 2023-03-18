@@ -1,0 +1,18 @@
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - makepkg -sic --noarchive
+
+  incr:
+    cmds:
+      - nvim --headless -c "/pkgver" -c "norm $^A" -c "x" PKGBUILD
+
+  add:
+    cmds:
+      - nvim --headless
+        -c "/depends"
+        -c "norm $%O'{{.CLI_ARGS}}'"
+        -c "x"
+        PKGBUILD

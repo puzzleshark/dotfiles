@@ -1,0 +1,5 @@
+[user]
+	email = samcbanning@gmail.com
+	name = Sam Banning
+[core]
+	editor = nvim

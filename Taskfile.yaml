@@ -1,0 +1,28 @@
+version: '3'
+
+tasks:
+  configure-neovim:
+    cmds:
+      - ln -s ~/.dotfiles/nvim ~/.config/nvim
+
+  configure-alacritty:
+    cmds:
+      - ln -s ~/.dotfiles/alacritty/.alacritty.yml ~/.alacritty.yml
+
+  configure-tmux:
+    cmds:
+      - ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
+  configure-git:
+    cmds:
+      - ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
+
+  configure-vscode:
+    cmds:
+      - ln -s ~/.dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
+      - ln -s ~/.dotfiles/vscode/keybindings.json ~/.config/Code/User/keybindings.json
+
+  configure-sway:
+    cmds:
+      - ln -s ~/.dotfiles/sway/config ~/.config/sway/config
+

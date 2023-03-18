@@ -1,0 +1,19 @@
+pkgname=esp32-tools
+pkgver=0.01
+pkgrel=1
+pkgdesc='A collection of tools for esp32'
+arch=('x86_64')
+depends=(
+    'gcc'
+    'git'
+    'make'
+    'flex'
+    'bison'
+    'gperf'
+    'python'
+    'cmake'
+    'ninja'
+    'ccache'
+    'dfu-util'
+    'libusb'
+)

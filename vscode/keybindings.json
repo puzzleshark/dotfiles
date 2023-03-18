@@ -1,0 +1,19 @@
+// Place your key bindings in this file to override the defaults
+//[
+//    {
+//        "key": "ctrl+alt+v",
+//        "command": "toggleVim"
+//    }
+//]
+
+[
+    {
+        "key": "ctrl+m",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+shift+q",
+        "command": "workbench.view.remote"
+    }
+]

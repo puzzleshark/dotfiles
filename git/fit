@@ -1,0 +1,162 @@
+#!/bin/bash
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+cat << 'EOF'
+usage: fit [options]
+
+f(ast-g)it: helpful utilties when dealing with git.
+
+- prepare: create a patch by passing a patch into stdin
+- logs: drop a patch
+- rebase: apply a patch
+- latest: list all patches
+EOF
+exit 0
+fi
+
+update() {
+    ls_master=$(git ls-remote origin master | awk '{print $1}')
+    master=$(git log --format="%H" -n 1 origin/master)
+    echo "local master: $master, remote master: $ls_master"
+    if [ $ls_master = $master ]; then
+        echo "no new updates from origin"
+        exit 0
+    fi
+    common=$(git merge-base origin/master HEAD)
+    if [ common = master ]; then
+        echo "your branch is up to date with origin master"
+        exit 0
+    fi
+    echo "branch is behind master."
+    printf 'do you want to rebase from master (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ] ;then 
+        git fetch origin master
+        git rebase origin/master
+    else
+        echo "not rebasing..."
+    fi
+    # else
+    #     echo "branch is up to date."
+    # fi
+}
+
+name=$(basename $(git rev-parse --show-toplevel))
+root="$HOME/.gitpatch"
+
+if [ "$1" = "ls" ] || [ "$1" == "list" ]; then
+
+    if [ -d $root/$name ]; then
+        ls $root/$name -1 | sed 's/\.[^.]*$//'
+    fi
+
+elif [ "$1" = "prepare" ]; then
+
+    name=$(git branch --show-current | sed -n -e 's/develop\/\(.*\)/\1/p')
+
+    # must be on a branch prefixed with develop/
+    if [ -z $name ]; then
+        echo "error: must be on a develop branch"
+        exit 1
+    fi
+    latest_commit=$(git log --format="%H" -n 1)
+    latest_commit_master=$(git log --format="%H" -n 1 origin/master)
+    echo "name: $name, HEAD: $latest_commit, master: $latest_commit_master"
+
+    # check if this branch has any content
+    if [ $latest_commit = $latest_commit_master ]; then
+        echo "error: on the same commit as master"
+        exit 1
+    fi
+
+    git log --format="%H" $latest_commit_master..$latest_commit # don't need this
+
+    # we need to recreate the feature branch
+    git branch -D feature/$name
+    git checkout -b feature/$name
+
+    # GIT_SEQUENCE_EDITOR="nvim -c '%g/\(^#\|^$\)/d' -c '%g/borrowed/s/^pick/drop' -c '2,\$s/^pick/fixup' -c '1s/^pick/reword'" git rebase -i $latest_commit_master
+    # GIT_SEQUENCE_EDITOR="nvim -c '%g/\(^#\|^$\)/d' -c '2,\$s/^pick/fixup' -c '1s/^pick/reword'" git rebase -i $latest_commit_master -S
+    # EDITOR="nvim -c '%g/\(^#\|^$\)/d' -c '2,\$s/^pick/fixup'" git rebase -i $latest_commit_master -S
+    # EDITOR="nvim -c '2,\$s/^pick/fixup'" git rebase -i $latest_commit_master -S
+    GIT_SEQUENCE_EDITOR="nvim -c 'silent! %g/\(^#\|^$\)/d' -c 'silent! %g/borrowed/s/^pick/drop' -c 'silent! 2,\$s/^pick/fixup' -c 'silent! 1s/^pick/reword'" git rebase -i $latest_commit_master
+
+    printf 'do you want to push to origin (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ] ;then 
+        git push --set-upstream origin feature/$name -f
+    else
+        echo "not pushing..."
+    fi
+    git checkout develop/$name
+
+elif [ "$1" = "rebase" ]; then
+
+    latest_commit=$(git log --format="%H" -n 1)
+    latest_commit_master=$(git log --format="%H" -n 1 origin/master)
+    echo "HEAD: $latest_commit, master: $latest_commit_master"
+    if [ $latest_commit = $latest_commit_master ]; then
+        echo "error: on the same commit as master"
+        exit 1
+    fi
+    git rebase -i origin/master
+
+elif [ "$1" = "log" ]; then
+
+    shift
+
+    latest_commit=$(git log --format="%H" -n 1)
+    latest_commit_master=$(git log --format="%H" -n 1 origin/master)
+    echo "HEAD: $latest_commit, master: $latest_commit_master"
+    if [ $latest_commit = $latest_commit_master ]; then
+        echo "error: on the same commit as master"
+        exit 1
+    fi
+    git log origin/master..HEAD "$@"
+
+elif [ "$1" = "latest" ]; then
+
+    update
+
+# elif [ "$1" = "select" ]; then
+#
+#     choice=$(ls $root/$name -1 | sed 's/\.[^.]*$//' | fzf)
+#     git apply $root/$name/${choice}.patch
+#
+# elif [ "$1" = "create" ]; then
+#
+#     if [ $# -lt 2 ]; then
+#         echo "need a name for the patch: gitpatch new <name>"
+#         exit 1
+#     fi
+#     mkdir -p ~/.gitchanges/$name
+#     cat > $root/$name/${2}.patch
+#
+# elif [ "$1" = "drop" ]; then
+#
+#     if [ $# -lt 2 ]; then
+#         echo "need a name for the patch"
+#         exit 1
+#     fi
+#
+#     rm $root/$name/${2}.patch
+#
+# elif [ "$1" = "apply" ]; then
+#
+#     echo "git apply $root/$name/${2}.patch"
+#     git apply $root/$name/${2}.patch
+#
+# elif [ "$1" = "show" ]; then
+#
+#     cat $root/$name/${2}.patch | diff-so-fancy | less --tabs=4 -RF
+#
+# elif [ "$1" = "reverse" ]; then
+#
+#     # echo "git apply --reverse $root/$name/${2}.patch"
+#     git apply --reverse $root/$name/${2}.patch
+
+else
+    
+    echo "invalid option"
+
+fi

@@ -1,0 +1,104 @@
+pkgname=dev-tools
+pkgver=0.30
+pkgrel=1
+pkgdesc='A collection of tools for development'
+arch=('x86_64')
+depends=(
+
+    # core
+    'grub'
+    'base'
+    'yay-git'
+    'fakeroot' # build packages
+    'm4' # base-devel
+    'autoconf' # base-devel
+    'pkgconf' # base-devel
+    'pkgfile' # base-devel
+    'patch' # base-devel
+
+    # neovim stuff
+    # 'neovim'
+    'lua-language-server'
+    'ccls'
+    'arduino-language-server-bin'
+
+    # terminal stuff
+    'alacritty'
+    'bat' # better cat
+    'exa' # better ls
+    'git'
+    'zsh'
+    'zoxide' # better ls
+    'neofetch' # display system info
+    'bear' # generate compilation database
+    'ripgrep' # better grep
+    'fd' # better find
+    'starship' # better prompt
+    'fzf' # fuzzy finder
+    'ninja' # build system
+    'rustup' # rust
+    'bottom' # better top
+    'tmux' # terminal multiplexer
+    'go-task-bin' # task runner
+    'cmake' # build system
+    'make' # build system
+    'meson' # build system
+    # 'direnv' # environment manager
+    'nmap' # network scanner
+    'unzip' # unzip
+    'zip' # zip
+    'wget' # download
+    'lazygit' # git gui
+    'docker' # containerization
+    'docker-compose' # containerization
+    'socat' # network utility
+    'qemu-base' # virtualization
+
+    # 3d modeling stuff
+    'godot'
+    'blender'
+    # 'freecad'
+    'slic3r'
+
+    # kicad stuff
+    # 'kicad'
+    # 'kicad-library'
+    # 'kicad-library-3d'
+
+    # audio stuff
+    'pulsemixer'
+    'easyeffects' # fun audio effects (sample pipewire app)
+    'sof-firmware' # sound card firmware
+
+    # gui stuff
+    'google-chrome'
+    'firefox'
+    # 'visual-studio-code-bin'
+    'gimp'
+
+    # microcontroller
+    'arduino-cli'
+    'arduino-ide-bin'
+    'avrdude' # upload to arduino
+    'gcc-arm-none-eabi-bin' # arm compiler
+    'picocom' # serial terminal
+    'stm32l4-headers-git' # stm32 headers
+    'stlink'
+
+    # desktop environment
+    'plasma-desktop' # desktop environment
+    'plasma-wayland-session' # wayland session
+    'rpi-imager-bin' # raspberry pi imager
+
+    # sway desktop
+    'sway'
+    'dmenu'
+    'i3status'
+    'swaybg'
+    'swayidle'
+    'swaylock'
+
+    # qt stuff
+    'qtcreator'
+    'qt5-doc'
+)

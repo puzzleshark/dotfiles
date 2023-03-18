@@ -1,0 +1,48 @@
+{
+    // blinking cursor is distracting
+    "editor.cursorBlinking": "solid",
+    
+    // this is the start-up help page (don't need this)
+    "workbench.startupEditor": "none",
+    
+    // make zenmode more similar to normal mode
+    "zenMode.fullScreen": false,
+    "zenMode.centerLayout": false,
+    
+    // remove scroll bars (don't need that visual clutter)
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+
+    // this is the top menu for file and view and stuff (looks bad)
+    "window.menuBarVisibility": "hidden",
+
+    // this is a nice theme that doesn't get in the way
+    "workbench.colorTheme": "GitHub Dark",
+
+    // would be ideal to just not have the minimap at all
+    "editor.minimap.autohide": true,
+
+    // increase the zoom level (otherwise too small on my screen)
+    "window.zoomLevel": 1,
+
+    // not sure what this is?
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "editor.inlineSuggest.enabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.activityBar.visible": false,
+    "editor.cursorStyle": "block",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false
+    },
+
+    // "extensions.ignoreRecommendations": true,
+    // "security.workspace.trust.untrustedFiles": "open",
+    // "workbench.activityBar.visible": false,
+    // "editor.inlineSuggest.enabled": true,
+}
