@@ -1,14 +1,19 @@
-#### ZSH SETUP
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-export EDITOR="nvim"
+export EDITOR="if [ -z '$NVIM' ]; then nvim '$@'; else  nvr --remote-wait; fi"
 
 fpath=($HOME/.completion_zsh $fpath)
 
 plugins=(
-    # vi-mode
+    kubectl-autocomplete
+    poetry
+    fzf
+    git
+    docker
+    ripgrep
+    virtualenv
     zsh-autosuggestions
     zsh-syntax-highlighting
     direnv
@@ -23,3 +28,12 @@ export LESS=-FRX
 
 # for z command (cd replacement)
 eval "$(zoxide init zsh)"
+
+# prevent nested nvim sessions
+vim() {
+    if [ -z "$NVIM" ]; then
+        nvim "$@"
+    else
+        nvr "$@"
+    fi
+}
