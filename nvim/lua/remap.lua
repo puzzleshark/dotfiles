@@ -9,7 +9,10 @@ wk.register({
     -- delete but don't change copy buffer
     -- vim.api.nvim_set_keymap("n", "<leader>d", "\"_d", { noremap = true })
     -- vim.api.nvim_set_keymap("v", "<leader>d", "\"_d", { noremap = true })
-    ["<leader>d"] = { "\"_d", "Delete but don't change copy buffer", mode={"n", "v"} },
+    ["<leader>d"] = { "\"_d", "Delete but don't change copy buffer", mode={"n", "v"}, noremap=true },
+    ["<leader>p"] = { "\"_dp", "Paste but don't change copy buffer", mode={"v"}, noremap=true },
+    -- ["<leader>p"] = { "pgv\"<C-r>=v:register<CR>y", "Paste but don't change copy buffer", mode = {"x"} },
+
 
 
     -- netrw
