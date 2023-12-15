@@ -12,6 +12,10 @@ wk.register({
     ["<leader>d"] = { "\"_d", "Delete but don't change copy buffer", mode={"n", "v"}, noremap=true },
     ["<leader>p"] = { "\"_dp", "Paste but don't change copy buffer", mode={"v"}, noremap=true },
     -- ["<leader>p"] = { "pgv\"<C-r>=v:register<CR>y", "Paste but don't change copy buffer", mode = {"x"} },
+    -- ["<leader>q"] = { ":terminal ranger :startInsert", "Open Ranger", mode={"n"}, noremap=true},
+    -- ["<leader>q"] = { ":terminal ranger<CR>:startinsert<CR>", "Open Ranger", mode={"n"}, noremap=true},
+    ["<leader>q"] = { ':terminal sh -c "cd %:p:h && ranger"<CR>:startinsert<CR>', "Open Ranger", mode={"n"}, noremap=true},
+    -- vim.api.nvim_set_keymap('n', '<leader>q', ':terminal ranger<CR>:startinsert<CR>', { noremap = true, silent = true })
 
 
 
