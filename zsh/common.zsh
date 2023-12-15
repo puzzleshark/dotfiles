@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-export EDITOR="if [ -z '$NVIM' ]; then nvim '$@'; else  nvr --remote-wait; fi"
+export EDITOR=$HOME/.dotfiles/nvim-remote/editor.sh
 
 fpath=($HOME/.completion_zsh $fpath)
 
@@ -30,6 +30,7 @@ export LESS=-FRX
 eval "$(zoxide init zsh)"
 
 # prevent nested nvim sessions
+# alias vim=$HOME/.dotfiles/nvim-remote/editor.sh
 vim() {
     if [ -z "$NVIM" ]; then
         nvim "$@"

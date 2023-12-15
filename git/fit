@@ -118,42 +118,42 @@ elif [ "$1" = "latest" ]; then
 
     update
 
-# elif [ "$1" = "select" ]; then
-#
-#     choice=$(ls $root/$name -1 | sed 's/\.[^.]*$//' | fzf)
-#     git apply $root/$name/${choice}.patch
-#
-# elif [ "$1" = "create" ]; then
-#
-#     if [ $# -lt 2 ]; then
-#         echo "need a name for the patch: gitpatch new <name>"
-#         exit 1
-#     fi
-#     mkdir -p ~/.gitchanges/$name
-#     cat > $root/$name/${2}.patch
-#
-# elif [ "$1" = "drop" ]; then
-#
-#     if [ $# -lt 2 ]; then
-#         echo "need a name for the patch"
-#         exit 1
-#     fi
-#
-#     rm $root/$name/${2}.patch
-#
-# elif [ "$1" = "apply" ]; then
-#
-#     echo "git apply $root/$name/${2}.patch"
-#     git apply $root/$name/${2}.patch
-#
-# elif [ "$1" = "show" ]; then
-#
-#     cat $root/$name/${2}.patch | diff-so-fancy | less --tabs=4 -RF
-#
-# elif [ "$1" = "reverse" ]; then
-#
-#     # echo "git apply --reverse $root/$name/${2}.patch"
-#     git apply --reverse $root/$name/${2}.patch
+elif [ "$1" = "select" ]; then
+
+    choice=$(ls $root/$name -1 | sed 's/\.[^.]*$//' | fzf)
+    git apply $root/$name/${choice}.patch
+
+elif [ "$1" = "create" ]; then
+
+    if [ $# -lt 2 ]; then
+        echo "need a name for the patch: gitpatch new <name>"
+        exit 1
+    fi
+    mkdir -p ~/.gitchanges/$name
+    cat > $root/$name/${2}.patch
+
+elif [ "$1" = "drop" ]; then
+
+    if [ $# -lt 2 ]; then
+        echo "need a name for the patch"
+        exit 1
+    fi
+
+    rm $root/$name/${2}.patch
+
+elif [ "$1" = "apply" ]; then
+
+    echo "git apply $root/$name/${2}.patch"
+    git apply $root/$name/${2}.patch
+
+elif [ "$1" = "show" ]; then
+
+    cat $root/$name/${2}.patch | diff-so-fancy | less --tabs=4 -RF
+
+elif [ "$1" = "reverse" ]; then
+
+    # echo "git apply --reverse $root/$name/${2}.patch"
+    git apply --reverse $root/$name/${2}.patch
 
 else
     
