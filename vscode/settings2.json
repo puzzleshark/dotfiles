@@ -1,0 +1,55 @@
+{
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font'",
+
+  // blinking cursor is distracting
+  "editor.cursorBlinking": "solid",
+
+  // this is the start-up help page (don't need this)
+  "workbench.startupEditor": "none",
+
+  // this is that path thing under the titlebar
+  "breadcrumbs.enabled": false,
+
+  // don't like minimap
+  "editor.minimap.enabled": false,
+
+  // maybe I should set this to off?
+  "window.menuBarVisibility": "toggle",
+
+  // make zenmode more similar to normal mode
+  "zenMode.fullScreen": false,
+  "zenMode.centerLayout": false,
+  "zenMode.showTabs": "none",
+  "zenMode.hideLineNumbers": false,
+
+  // remove scroll bars (don't need that visual clutter)
+  "editor.scrollbar.horizontal": "hidden",
+  // "editor.scrollbar.vertical": "hidden", // seems like even when this is hidden the bar is still there
+
+  // this one hides the random icons in the titlebar
+  "workbench.editor.editorActionsLocation": "hidden",
+
+  // not sure what this does
+  "workbench.layoutControl.enabled": false,
+
+  // this removes that weird center thing, don't know if I want this
+  "window.commandCenter": false,
+
+  // I don't think this does anything?
+  "debug.toolBarLocation": "hidden",
+
+  // these are fun
+  // "editor.scrollbar.vertical": "hidden",
+  "accessibility.hideAccessibleView": true,
+  "workbench.activityBar.location": "hidden",
+  "workbench.editor.empty.hint": "hidden",
+
+  
+
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "remote.autoForwardPortsSource": "hybrid",
+}
+
